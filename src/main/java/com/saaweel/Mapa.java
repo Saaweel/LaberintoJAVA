@@ -59,10 +59,10 @@ public class Mapa {
 
     @Override
     public String toString() {
-        String mapa = " ";
+        String mapa = "";
 
         for (int i = 0; i < this.ancho; i++) {
-            mapa += "_ ";
+            mapa += " _";
         }
 
         mapa += "\n";
