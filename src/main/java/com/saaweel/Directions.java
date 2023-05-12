@@ -1,5 +1,5 @@
 package com.saaweel;
 
-public enum Direcciones {
+public enum Directions {
     N, S, E, O;
 }

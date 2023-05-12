@@ -1,10 +1,10 @@
 package com.saaweel;
 
-public class Pared {
+public class Wall {
     private int x;
     private int y;
 
-    public Pared(int x, int y) {
+    public Wall(int x, int y) {
         this.x = x;
         this.y = y;
     }

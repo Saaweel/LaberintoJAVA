@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Harry {
     private int position;
-    private LinkedList<Direcciones> path;
+    private LinkedList<Directions> path;
     private LinkedList<Integer> visited;
 
     public Harry(int position) {
@@ -17,7 +17,7 @@ public class Harry {
         return position;
     }
 
-    public LinkedList<Direcciones> getPath() {
+    public LinkedList<Directions> getPath() {
         return path;
     }
 
@@ -29,7 +29,7 @@ public class Harry {
         this.position = position;
     }
 
-    public void setPath(LinkedList<Direcciones> path) {
+    public void setPath(LinkedList<Directions> path) {
         this.path = path;
     }
 
@@ -41,7 +41,7 @@ public class Harry {
         this.visited.add(position);
     }
 
-    public void addPath(Direcciones direction) {
+    public void addPath(Directions direction) {
         this.path.add(direction);
     }
 
@@ -49,7 +49,7 @@ public class Harry {
         this.visited.remove(position);
     }
 
-    public void removePath(Direcciones direction) {
+    public void removePath(Directions direction) {
         this.path.remove(direction);
     }
 
@@ -57,31 +57,31 @@ public class Harry {
         return this.visited.contains(position);
     }
 
-    public boolean traceRoute(Mapa m) {
+    public boolean traceRoute(Map m) {
         if (this.position == m.getExit()) {
             this.position = 0;
             return true;
         } else {
-            if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getAncho()) && !isVisited(this.position + m.getAncho())) {
-                this.position += m.getAncho();
+            if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !isVisited(this.position + m.getWidth())) {
+                this.position += m.getWidth();
                 addVisited(this.position);
-                addPath(Direcciones.S);
+                addPath(Directions.S);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Direcciones.S);
-                    this.position -= m.getAncho();
+                    removePath(Directions.S);
+                    this.position -= m.getWidth();
                 }
             }
 
             if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !isVisited(this.position + 1)) {
                 this.position += 1;
                 addVisited(this.position);
-                addPath(Direcciones.E);
+                addPath(Directions.E);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Direcciones.E);
+                    removePath(Directions.E);
                     this.position -= 1;
                 }
             }
@@ -89,24 +89,24 @@ public class Harry {
             if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !isVisited(this.position - 1)) {
                 this.position -= 1;
                 addVisited(this.position);
-                addPath(Direcciones.O);
+                addPath(Directions.O);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Direcciones.O);
+                    removePath(Directions.O);
                     this.position += 1;
                 }
             }
 
-            if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getAncho()) && !isVisited(this.position - m.getAncho())) {
-                this.position -= m.getAncho();
+            if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !isVisited(this.position - m.getWidth())) {
+                this.position -= m.getWidth();
                 addVisited(this.position);
-                addPath(Direcciones.N);
+                addPath(Directions.N);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Direcciones.N);
-                    this.position += m.getAncho();
+                    removePath(Directions.N);
+                    this.position += m.getWidth();
                 }
             }
             return false;
