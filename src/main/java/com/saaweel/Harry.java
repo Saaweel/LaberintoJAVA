@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Harry {
     private int position;
-    private LinkedList<Directions> path;
+    private LinkedList<Direction> path;
     private LinkedList<Integer> visited;
 
     public Harry(Map m) {
@@ -18,7 +18,7 @@ public class Harry {
         return this.position;
     }
 
-    public LinkedList<Directions> getPath() {
+    public LinkedList<Direction> getPath() {
         return this.path;
     }
 
@@ -30,7 +30,7 @@ public class Harry {
         this.position = position;
     }
 
-    public void setPath(LinkedList<Directions> path) {
+    public void setPath(LinkedList<Direction> path) {
         this.path = path;
     }
 
@@ -42,7 +42,7 @@ public class Harry {
         this.visited.add(position);
     }
 
-    public void addPath(Directions direction) {
+    public void addPath(Direction direction) {
         this.path.add(direction);
     }
 
@@ -50,7 +50,7 @@ public class Harry {
         this.visited.remove(position);
     }
 
-    public void removePath(Directions direction) {
+    public void removePath(Direction direction) {
         this.path.remove(direction);
     }
 
@@ -66,11 +66,11 @@ public class Harry {
             if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !isVisited(this.position + m.getWidth())) {
                 this.position += m.getWidth();
                 addVisited(this.position);
-                addPath(Directions.S);
+                addPath(Direction.S);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Directions.S);
+                    removePath(Direction.S);
                     this.position -= m.getWidth();
                 }
             }
@@ -78,11 +78,11 @@ public class Harry {
             if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !isVisited(this.position + 1)) {
                 this.position += 1;
                 addVisited(this.position);
-                addPath(Directions.E);
+                addPath(Direction.E);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Directions.E);
+                    removePath(Direction.E);
                     this.position -= 1;
                 }
             }
@@ -90,11 +90,11 @@ public class Harry {
             if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !isVisited(this.position - 1)) {
                 this.position -= 1;
                 addVisited(this.position);
-                addPath(Directions.O);
+                addPath(Direction.O);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Directions.O);
+                    removePath(Direction.O);
                     this.position += 1;
                 }
             }
@@ -102,11 +102,11 @@ public class Harry {
             if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !isVisited(this.position - m.getWidth())) {
                 this.position -= m.getWidth();
                 addVisited(this.position);
-                addPath(Directions.N);
+                addPath(Direction.N);
                 if (traceRoute(m)) {
                     return true;
                 } else {
-                    removePath(Directions.N);
+                    removePath(Direction.N);
                     this.position += m.getWidth();
                 }
             }
@@ -116,7 +116,7 @@ public class Harry {
 
     public void move(Map m) {
         if (!this.path.isEmpty()) {
-            Directions direction = this.path.removeFirst();
+            Direction direction = this.path.removeFirst();
             switch (direction) {
                 case N:
                     this.position -= m.getWidth();
