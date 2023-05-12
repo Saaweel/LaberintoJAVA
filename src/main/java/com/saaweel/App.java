@@ -3,7 +3,6 @@ package com.saaweel;
 public class App {
     public static void main( String[] args ) {
         Map m = new Map(4,4);
-        System.out.println(m);
         m.addWall(0,4);
         m.addWall(3,7);
         m.addWall(5,6);
@@ -13,7 +12,14 @@ public class App {
         m.addWall(10,11);
         m.addWall(10,14);
         m.addWall(11,15);
+        Harry harry = new Harry(m);
+        m.spawnHarry(harry);
         System.out.println(m);
+
+        while (harry.getPosition() != m.getExit()) {
+            harry.move(m);
+            System.out.println(m);
+        }
         
         // m = new Map(7,5);
         // System.out.println(m);

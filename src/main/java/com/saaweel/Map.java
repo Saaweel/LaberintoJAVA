@@ -12,7 +12,6 @@ public class Map {
         this.width = width;
         this.height = height;
         this.walls = new LinkedList<Wall>();
-        this.harry = new Harry(0);
     }
 
     public int getWidth() {
@@ -50,7 +49,7 @@ public class Map {
             x = y;
             y = aux;
         }
-        
+
         for (Wall wall : this.walls) {
             if (wall.getX() == x && wall.getY() == y) {
                 return true;
@@ -79,6 +78,10 @@ public class Map {
         return position % this.width == this.width - 1;
     }
 
+    public void spawnHarry(Harry harry) {
+        this.harry = harry;
+    }
+
     @Override
     public String toString() {
         String str = "";
@@ -95,7 +98,7 @@ public class Map {
             for (int j = 0; j < this.width; j++) {
                 int pos = i * this.width + j;
 
-                if (pos == this.harry.getPosition()) {
+                if (this.harry != null && pos == this.harry.getPosition()) {
                     str += "H";
                 } else {
                     if (i == this.height - 1) {

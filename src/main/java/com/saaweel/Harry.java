@@ -7,22 +7,23 @@ public class Harry {
     private LinkedList<Directions> path;
     private LinkedList<Integer> visited;
 
-    public Harry(int position) {
-        this.position = position;
-        this.path = new LinkedList<>();
+    public Harry(Map m) {
+        this.position = 0;
         this.visited = new LinkedList<>();
+        this.path = new LinkedList<>();
+        this.traceRoute(m);
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
     public LinkedList<Directions> getPath() {
-        return path;
+        return this.path;
     }
 
     public LinkedList<Integer> getVisited() {
-        return visited;
+        return this.visited;
     }
 
     public void setPosition(int position) {
@@ -110,6 +111,26 @@ public class Harry {
                 }
             }
             return false;
+        }
+    }
+
+    public void move(Map m) {
+        if (!this.path.isEmpty()) {
+            Directions direction = this.path.removeFirst();
+            switch (direction) {
+                case N:
+                    this.position -= m.getWidth();
+                    break;
+                case S:
+                    this.position += m.getWidth();
+                    break;
+                case E:
+                    this.position += 1;
+                    break;
+                case O:
+                    this.position -= 1;
+                    break;
+            }
         }
     }
 }
