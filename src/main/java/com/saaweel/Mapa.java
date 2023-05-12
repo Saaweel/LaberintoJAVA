@@ -6,11 +6,13 @@ public class Mapa {
     private int ancho;
     private int alto;
     private LinkedList<Pared> paredes;
+    private Harry harry;
 
     public Mapa(int alto, int ancho) {
         this.ancho = ancho;
         this.alto = alto;
         this.paredes = new LinkedList<Pared>();
+        this.harry = new Harry(0);
     }
 
     public int getAncho() {
@@ -36,13 +38,13 @@ public class Mapa {
             y = aux;
         }
 
-        if (x >= 0 && x < this.ancho * this.alto && y >= 0 && y < this.ancho * this.alto && !existePared(x, y)) {
+        if (x >= 0 && x < this.ancho * this.alto && y >= 0 && y < this.ancho * this.alto && !existWall(x, y)) {
             Pared pared = new Pared(x, y);
             this.paredes.add(pared);
         }
     }
 
-    public boolean existePared(int x, int y) {
+    public boolean existWall(int x, int y) {
         if (x > y) {
             int aux = x;
             x = y;
@@ -55,6 +57,26 @@ public class Mapa {
             }
         }
         return false;
+    }
+
+    public int getExit() {
+        return this.ancho * this.alto - 1;
+    }
+
+    public boolean isFirstFloor(int position) {
+        return position < this.ancho;
+    }
+
+    public boolean isLastFloor(int position) {
+        return position >= this.ancho * (this.alto - 1);
+    }
+
+    public boolean isFirstWall(int position) {
+        return position % this.ancho == 0;
+    }
+
+    public boolean isLastWall(int position) {
+        return position % this.ancho == this.ancho - 1;
     }
 
     @Override
@@ -73,18 +95,22 @@ public class Mapa {
             for (int j = 0; j < this.ancho; j++) {
                 int pos = i * this.ancho + j;
 
-                if (i == this.alto - 1) {
-                    mapa += "_";
+                if (pos == this.harry.getPosition()) {
+                    mapa += "H";
                 } else {
-                    if (existePared(pos, pos + this.ancho)) {
+                    if (i == this.alto - 1) {
                         mapa += "_";
                     } else {
-                        mapa += " ";
+                        if (existWall(pos, pos + this.ancho)) {
+                            mapa += "_";
+                        } else {
+                            mapa += " ";
+                        }
                     }
                 }
-
+    
                 if (j != this.ancho - 1) {
-                    if (existePared(pos, pos + 1)) {
+                    if (existWall(pos, pos + 1)) {
                         mapa += "|";
                     } else {
                         mapa += " ";
