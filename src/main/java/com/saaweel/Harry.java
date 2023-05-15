@@ -11,7 +11,7 @@ public class Harry {
         this.position = 0;
         this.path = new LinkedList<>();
         this.health = 100;
-        traceRoute(m, null);
+        traceRoute(m, new LinkedList<Integer>());
     }
 
     public int getPosition() {
@@ -33,14 +33,10 @@ public class Harry {
     public void resetPosition(Map m) {
         this.position = 0;
         this.path = new LinkedList<>();
-        traceRoute(m, null);
+        traceRoute(m, new LinkedList<Integer>());
     }
 
     public boolean traceRoute(Map m, LinkedList<Integer> visited) {
-        if (visited == null) {
-            visited = new LinkedList<>();
-        }
-
         if (this.position == m.getExit()) {
             this.position = 0;
             return true;
