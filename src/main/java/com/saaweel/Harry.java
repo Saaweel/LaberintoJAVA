@@ -24,24 +24,8 @@ public class Harry {
         this.position = position;
     }
 
-    public void setPath(LinkedList<Direction> path) {
-        this.path = path;
-    }
-
-    public void setVisited(LinkedList<Integer> visited) {
-        this.visited = visited;
-    }
-
-    public void addVisited(int position) {
-        this.visited.add(position);
-    }
-
     public void addPath(Direction direction) {
         this.path.add(direction);
-    }
-
-    public void removeVisited(int position) {
-        this.visited.remove(position);
     }
 
     public void removePath(Direction direction) {
@@ -62,7 +46,7 @@ public class Harry {
         } else {
             if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !this.visited.contains(this.position + m.getWidth())) {
                 this.position += m.getWidth();
-                addVisited(this.position);
+                this.visited.add(this.position);
                 addPath(Direction.S);
                 if (traceRoute(m)) {
                     return true;
@@ -74,7 +58,7 @@ public class Harry {
 
             if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !this.visited.contains(this.position + 1)) {
                 this.position += 1;
-                addVisited(this.position);
+                this.visited.add(this.position);
                 addPath(Direction.E);
                 if (traceRoute(m)) {
                     return true;
@@ -86,7 +70,7 @@ public class Harry {
 
             if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !this.visited.contains(this.position - 1)) {
                 this.position -= 1;
-                addVisited(this.position);
+                this.visited.add(this.position);
                 addPath(Direction.O);
                 if (traceRoute(m)) {
                     return true;
@@ -98,7 +82,7 @@ public class Harry {
 
             if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !this.visited.contains(this.position - m.getWidth())) {
                 this.position -= m.getWidth();
-                addVisited(this.position);
+                this.visited.add(this.position);
                 addPath(Direction.N);
                 if (traceRoute(m)) {
                     return true;
