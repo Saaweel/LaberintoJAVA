@@ -18,14 +18,6 @@ public class Harry {
         return this.position;
     }
 
-    public LinkedList<Direction> getPath() {
-        return this.path;
-    }
-
-    public LinkedList<Integer> getVisited() {
-        return this.visited;
-    }
-
     public void setPosition(int position) {
         this.position = position;
     }
