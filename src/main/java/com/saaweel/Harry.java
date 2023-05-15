@@ -5,15 +5,13 @@ import java.util.LinkedList;
 public class Harry {
     private int position;
     private LinkedList<Direction> path;
-    private LinkedList<Integer> visited;
     private int health;
 
     public Harry(Map m) {
         this.position = 0;
-        this.visited = new LinkedList<>();
         this.path = new LinkedList<>();
         this.health = 100;
-        this.traceRoute(m);
+        traceRoute(m, null);
     }
 
     public int getPosition() {
@@ -35,20 +33,23 @@ public class Harry {
     public void resetPosition(Map m) {
         this.position = 0;
         this.path = new LinkedList<>();
-        this.visited = new LinkedList<>();
-        traceRoute(m);
+        traceRoute(m, null);
     }
 
-    public boolean traceRoute(Map m) {
+    public boolean traceRoute(Map m, LinkedList<Integer> visited) {
+        if (visited == null) {
+            visited = new LinkedList<>();
+        }
+
         if (this.position == m.getExit()) {
             this.position = 0;
             return true;
         } else {
-            if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !this.visited.contains(this.position + m.getWidth())) {
+            if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !visited.contains(this.position + m.getWidth())) {
                 this.position += m.getWidth();
-                this.visited.add(this.position);
+                visited.add(this.position);
                 addPath(Direction.S);
-                if (traceRoute(m)) {
+                if (traceRoute(m, visited)) {
                     return true;
                 } else {
                     removePath(Direction.S);
@@ -56,11 +57,11 @@ public class Harry {
                 }
             }
 
-            if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !this.visited.contains(this.position + 1)) {
+            if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !visited.contains(this.position + 1)) {
                 this.position += 1;
-                this.visited.add(this.position);
+                visited.add(this.position);
                 addPath(Direction.E);
-                if (traceRoute(m)) {
+                if (traceRoute(m, visited)) {
                     return true;
                 } else {
                     removePath(Direction.E);
@@ -68,11 +69,11 @@ public class Harry {
                 }
             }
 
-            if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !this.visited.contains(this.position - 1)) {
+            if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !visited.contains(this.position - 1)) {
                 this.position -= 1;
-                this.visited.add(this.position);
+                visited.add(this.position);
                 addPath(Direction.O);
-                if (traceRoute(m)) {
+                if (traceRoute(m, visited)) {
                     return true;
                 } else {
                     removePath(Direction.O);
@@ -80,11 +81,11 @@ public class Harry {
                 }
             }
 
-            if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !this.visited.contains(this.position - m.getWidth())) {
+            if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !visited.contains(this.position - m.getWidth())) {
                 this.position -= m.getWidth();
-                this.visited.add(this.position);
+                visited.add(this.position);
                 addPath(Direction.N);
-                if (traceRoute(m)) {
+                if (traceRoute(m, visited)) {
                     return true;
                 } else {
                     removePath(Direction.N);
