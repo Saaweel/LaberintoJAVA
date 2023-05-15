@@ -6,11 +6,13 @@ public class Harry {
     private int position;
     private LinkedList<Direction> path;
     private LinkedList<Integer> visited;
+    private int health;
 
     public Harry(Map m) {
         this.position = 0;
         this.visited = new LinkedList<>();
         this.path = new LinkedList<>();
+        this.health = 100;
         this.traceRoute(m);
     }
 
@@ -46,8 +48,11 @@ public class Harry {
         this.path.remove(direction);
     }
 
-    public boolean isVisited(int position) {
-        return this.visited.contains(position);
+    public void resetPosition(Map m) {
+        this.position = 0;
+        this.path = new LinkedList<>();
+        this.visited = new LinkedList<>();
+        traceRoute(m);
     }
 
     public boolean traceRoute(Map m) {
@@ -55,7 +60,7 @@ public class Harry {
             this.position = 0;
             return true;
         } else {
-            if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !isVisited(this.position + m.getWidth())) {
+            if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !this.visited.contains(this.position + m.getWidth())) {
                 this.position += m.getWidth();
                 addVisited(this.position);
                 addPath(Direction.S);
@@ -67,7 +72,7 @@ public class Harry {
                 }
             }
 
-            if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !isVisited(this.position + 1)) {
+            if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !this.visited.contains(this.position + 1)) {
                 this.position += 1;
                 addVisited(this.position);
                 addPath(Direction.E);
@@ -79,7 +84,7 @@ public class Harry {
                 }
             }
 
-            if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !isVisited(this.position - 1)) {
+            if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !this.visited.contains(this.position - 1)) {
                 this.position -= 1;
                 addVisited(this.position);
                 addPath(Direction.O);
@@ -91,7 +96,7 @@ public class Harry {
                 }
             }
 
-            if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !isVisited(this.position - m.getWidth())) {
+            if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !this.visited.contains(this.position - m.getWidth())) {
                 this.position -= m.getWidth();
                 addVisited(this.position);
                 addPath(Direction.N);
@@ -124,5 +129,13 @@ public class Harry {
                     break;
             }
         }
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

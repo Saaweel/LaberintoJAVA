@@ -12,17 +12,38 @@ public class App {
         m.addWall(10,11);
         m.addWall(10,14);
         m.addWall(11,15);
+
+        m.addAdverse(new Wind("Viento Norte", 2));
+        m.addAdverse(new Wind("Viento Sur", 13));
+        m.addAdverse(new Dementor(6));
+        m.addAdverse(new Dementor(10));
+
+
         Harry harry = new Harry(m);
         m.spawnHarry(harry);
         System.out.println(m);
 
-        while (harry.getPosition() != m.getExit()) {
+        for (int i = 0; harry.getPosition() != m.getExit(); i++) {
             harry.move(m);
+
+            m.doAdverses();
+
+            if (harry.getHealth() <= 0) {
+                System.out.println("Harry ha muerto");
+                break;
+            }
+            
+            System.out.println("Turno " + i);
             System.out.println(m);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("");
         }
         
         // m = new Map(7,5);
-        // System.out.println(m);
         // m.addWall(0,5);
         // m.addWall(2,3);
         // m.addWall(3,8);
@@ -48,6 +69,12 @@ public class App {
         // m.addWall(27,32);
         // m.addWall(28,29);
         // m.addWall(28,33);
-        // System.out.println(m);
+
+        // m.addAdverse(new Wind("Viento Norte", 2));
+        // m.addAdverse(new Wind("Viento Sur", 32));
+        // m.addAdverse(new Dementor(10));
+        // m.addAdverse(new Dementor(21));
+        // m.addAdverse(new Dementor(26));
+        // m.addAdverse(new Dementor(19));
     }
 }

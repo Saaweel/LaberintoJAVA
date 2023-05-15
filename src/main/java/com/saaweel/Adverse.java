@@ -25,5 +25,5 @@ public abstract class Adverse {
         this.position = position;
     }
     
-    public abstract void doAdverse();
+    public abstract void doAdverse(Harry harry, Map m);
 }

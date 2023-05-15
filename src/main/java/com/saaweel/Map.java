@@ -7,11 +7,13 @@ public class Map {
     private int height;
     private LinkedList<Wall> walls;
     private Harry harry;
+    private LinkedList<Adverse> adverses;
 
     public Map(int height, int width) {
         this.width = width;
         this.height = height;
         this.walls = new LinkedList<Wall>();
+        this.adverses = new LinkedList<Adverse>();
     }
 
     public int getWidth() {
@@ -80,6 +82,20 @@ public class Map {
 
     public void spawnHarry(Harry harry) {
         this.harry = harry;
+    }
+
+    public void addAdverse(Adverse adverse) {
+        this.adverses.add(adverse);
+    }
+
+    public void doAdverses() {
+        for (int i = 0; i < this.adverses.size(); i++) {
+            Adverse adverse = this.adverses.get(i);
+            if (adverse.getPosition() == this.harry.getPosition()) {
+                adverse.doAdverse(this.harry, this);
+                this.adverses.remove(i);
+            }
+        }
     }
 
     @Override

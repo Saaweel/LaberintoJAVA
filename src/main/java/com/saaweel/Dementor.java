@@ -1,11 +1,12 @@
 package com.saaweel;
 
 public class Dementor extends Adverse {
-    public Dementor(String name, int position) {
-        super(name, position);
+    public Dementor(int position) {
+        super("Dementor", position);
     }
 
-    public void doAdverse() {
-        System.out.println("Dementor is sucking your soul");
+    public void doAdverse(Harry harry, Map m) {
+        harry.setHealth(harry.getHealth() - 30);
+        System.out.println("Un Dementor ha atacado a Harry, su salud es: " + harry.getHealth() + "♥");
     }
 }
