@@ -1,6 +1,28 @@
 package com.saaweel;
 
 public class App {
+    private static void executeGame(Harry harry, Map m) {
+        for (int i = 0; harry.getPosition() != m.getExit(); i++) {
+            harry.move(m);
+
+            m.doAdverses();
+
+            if (harry.getHealth() <= 0) {
+                System.out.println("Harry ha muerto");
+                break;
+            }
+            
+            System.out.println("Turno " + i);
+            System.out.println(m);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("");
+        }
+    }
+
     public static void main( String[] args ) {
         Map m = new Map(4,4);
         m.addWall(0,4);
@@ -23,25 +45,7 @@ public class App {
         m.spawnHarry(harry);
         System.out.println(m);
 
-        for (int i = 0; harry.getPosition() != m.getExit(); i++) {
-            harry.move(m);
-
-            m.doAdverses();
-
-            if (harry.getHealth() <= 0) {
-                System.out.println("Harry ha muerto");
-                break;
-            }
-            
-            System.out.println("Turno " + i);
-            System.out.println(m);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("");
-        }
+        executeGame(harry, m);
         
         // m = new Map(7,5);
         // m.addWall(0,5);
