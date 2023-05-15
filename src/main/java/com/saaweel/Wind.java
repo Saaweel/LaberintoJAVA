@@ -6,6 +6,7 @@ public class Wind extends Adverse {
     }
 
     public void doAdverse(Harry harry, Map m) {
+        System.out.println("¡Adversidad " + super.getName() + " atacando a Harry!");
         harry.resetPosition(m);
     }
 }

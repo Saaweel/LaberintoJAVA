@@ -2,21 +2,29 @@ package com.saaweel;
 
 public class App {
     private static void executeGame(Harry harry, Map m) {
-        for (int i = 0; harry.getPosition() != m.getExit(); i++) {
+        System.out.println("COMIENZA LA BATALLA");
+        System.out.println("Turno: 0, salud de Harry: " + harry.getHealth());
+        System.out.println(m);
+
+        for (int i = 1; harry.getPosition() != m.getExit(); i++) {
+            if (i % 10 == 0) {
+                harry.setHealth(harry.getHealth() - 20);
+            }
+
+            System.out.println("Turno: " + i + ", salud de Harry: " + harry.getHealth());
             harry.move(m);
 
             m.doAdverses();
-
-            if ( i % 10 == 0) {
-                harry.setHealth(harry.getHealth() - 20);
-            }
             
             System.out.println(m);
 
             if (harry.getHealth() <= 0) {
-                break;
+                System.out.println("Harry no ha conseguido salir del laberinto :(");
+                return;
             }
         }
+
+        System.out.println("HARRY HA GANADO EL JUEGO :)");
     }
 
     public static void main( String[] args ) {
@@ -39,7 +47,6 @@ public class App {
 
         Harry harry = new Harry(m);
         m.spawnHarry(harry);
-        System.out.println(m);
 
         executeGame(harry, m);
         
