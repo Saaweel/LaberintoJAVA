@@ -7,19 +7,15 @@ public class App {
 
             m.doAdverses();
 
-            if (harry.getHealth() <= 0) {
-                System.out.println("Harry ha muerto");
-                break;
+            if ( i % 10 == 0) {
+                harry.setHealth(harry.getHealth() - 20);
             }
             
-            System.out.println("Turno " + i);
             System.out.println(m);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+            if (harry.getHealth() <= 0) {
+                break;
             }
-            System.out.println("");
         }
     }
 
