@@ -22,14 +22,6 @@ public class Harry {
         this.position = position;
     }
 
-    public void addPath(Direction direction) {
-        this.path.add(direction);
-    }
-
-    public void removePath(Direction direction) {
-        this.path.remove(direction);
-    }
-
     public void resetPosition(Map m) {
         this.position = 0;
         this.path = new LinkedList<>();
@@ -44,11 +36,11 @@ public class Harry {
             if (!m.isLastFloor(this.position) && !m.existWall(this.position, this.position + m.getWidth()) && !visited.contains(this.position + m.getWidth())) {
                 this.position += m.getWidth();
                 visited.add(this.position);
-                addPath(Direction.S);
+                this.path.add(Direction.S);
                 if (traceRoute(m, visited)) {
                     return true;
                 } else {
-                    removePath(Direction.S);
+                    this.path.removeLast();
                     this.position -= m.getWidth();
                 }
             }
@@ -56,11 +48,11 @@ public class Harry {
             if (!m.isLastWall(this.position) && !m.existWall(this.position, this.position + 1) && !visited.contains(this.position + 1)) {
                 this.position += 1;
                 visited.add(this.position);
-                addPath(Direction.E);
+                this.path.add(Direction.E);
                 if (traceRoute(m, visited)) {
                     return true;
                 } else {
-                    removePath(Direction.E);
+                    this.path.removeLast();
                     this.position -= 1;
                 }
             }
@@ -68,11 +60,11 @@ public class Harry {
             if (!m.isFirstWall(this.position) && !m.existWall(this.position, this.position - 1) && !visited.contains(this.position - 1)) {
                 this.position -= 1;
                 visited.add(this.position);
-                addPath(Direction.O);
+                this.path.add(Direction.O);
                 if (traceRoute(m, visited)) {
                     return true;
                 } else {
-                    removePath(Direction.O);
+                    this.path.removeLast();
                     this.position += 1;
                 }
             }
@@ -80,11 +72,11 @@ public class Harry {
             if (!m.isFirstFloor(this.position) && !m.existWall(this.position, this.position - m.getWidth()) && !visited.contains(this.position - m.getWidth())) {
                 this.position -= m.getWidth();
                 visited.add(this.position);
-                addPath(Direction.N);
+                this.path.add(Direction.N);
                 if (traceRoute(m, visited)) {
                     return true;
                 } else {
-                    removePath(Direction.N);
+                    this.path.removeLast();
                     this.position += m.getWidth();
                 }
             }
