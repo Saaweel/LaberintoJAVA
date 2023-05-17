@@ -11,17 +11,18 @@ public class App {
                 harry.setHealth(harry.getHealth() - 20);
             }
 
+            if (harry.getHealth() <= 0) {
+                System.out.println("Harry no ha conseguido salir del laberinto :(");
+                return;
+            }
+
             System.out.println("Turno: " + i + ", salud de Harry: " + harry.getHealth());
+
             harry.move(m);
 
             m.doAdverses();
             
             System.out.println(m);
-
-            if (harry.getHealth() <= 0) {
-                System.out.println("Harry no ha conseguido salir del laberinto :(");
-                return;
-            }
         }
 
         System.out.println("HARRY HA GANADO EL JUEGO :)");
