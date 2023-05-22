@@ -9,7 +9,7 @@ public class Harry {
 
     public Harry(Map m) {
         this.position = 0;
-        this.path = new LinkedList<>();
+        this.path = new LinkedList();
         this.health = 100;
         traceRoute(m, new LinkedList<Integer>());
     }
@@ -24,7 +24,7 @@ public class Harry {
 
     public void resetPosition(Map m) {
         this.position = 0;
-        this.path = new LinkedList<>();
+        this.path = new LinkedList();
         traceRoute(m, new LinkedList<Integer>());
     }
 
