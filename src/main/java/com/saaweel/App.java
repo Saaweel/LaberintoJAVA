@@ -5,7 +5,7 @@ import java.io.FileWriter;
 public class App {
     private static void executeGame(Harry harry, Map m) {
         try {
-            FileWriter writer = new FileWriter("registro.log");
+            FileWriter writer = new FileWriter("main/java/com/saaweel/registro.log");
 
             System.out.println("COMIENZA LA BATALLA");
             writer.write("COMIENZA LA BATALLA\n");
