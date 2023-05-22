@@ -31,7 +31,7 @@ public class App {
 
                 harry.move(m);
 
-                m.doAdverses();
+                m.doAdverses(writer);
                 
                 System.out.println(m);
                 writer.write(m.toString());

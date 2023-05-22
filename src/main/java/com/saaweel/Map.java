@@ -1,5 +1,6 @@
 package com.saaweel;
 
+import java.io.FileWriter;
 import java.util.LinkedList;
 
 public class Map {
@@ -88,11 +89,11 @@ public class Map {
         this.adverses.add(adverse);
     }
 
-    public void doAdverses() {
+    public void doAdverses(FileWriter writer) {
         for (int i = 0; i < this.adverses.size(); i++) {
             Adverse adverse = this.adverses.get(i);
             if (adverse.getPosition() == this.harry.getPosition()) {
-                adverse.doAdverse(this.harry, this);
+                adverse.doAdverse(this.harry, this, writer);
                 this.adverses.remove(i);
             }
         }

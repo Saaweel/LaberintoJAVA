@@ -1,5 +1,7 @@
 package com.saaweel;
 
+import java.io.FileWriter;
+
 public abstract class Adverse {
     private String name;
     private int position;
@@ -25,5 +27,5 @@ public abstract class Adverse {
         this.position = position;
     }
     
-    public abstract void doAdverse(Harry harry, Map m);
+    public abstract void doAdverse(Harry harry, Map m, FileWriter writer);
 }
