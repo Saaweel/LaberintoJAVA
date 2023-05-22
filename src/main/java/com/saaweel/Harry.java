@@ -28,7 +28,7 @@ public class Harry {
         traceRoute(m, new LinkedList<Integer>());
     }
 
-    public boolean traceRoute(Map m, LinkedList<Integer> visited) {
+    private boolean traceRoute(Map m, LinkedList<Integer> visited) {
         if (this.position == m.getExit()) {
             this.position = 0;
             return true;
