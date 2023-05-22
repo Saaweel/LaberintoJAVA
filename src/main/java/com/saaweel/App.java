@@ -1,31 +1,48 @@
 package com.saaweel;
 
+import java.io.FileWriter;
+
 public class App {
     private static void executeGame(Harry harry, Map m) {
-        System.out.println("COMIENZA LA BATALLA");
-        System.out.println("Turno: 0, salud de Harry: " + harry.getHealth());
-        System.out.println(m);
+        try {
+            FileWriter writer = new FileWriter("registro.log");
 
-        for (int i = 1; harry.getPosition() != m.getExit(); i++) {
-            if (i % 10 == 0) {
-                harry.setHealth(harry.getHealth() - 20);
-            }
-
-            if (harry.getHealth() <= 0) {
-                System.out.println("Harry no ha conseguido salir del laberinto :(");
-                return;
-            }
-
-            System.out.println("Turno: " + i + ", salud de Harry: " + harry.getHealth());
-
-            harry.move(m);
-
-            m.doAdverses();
-            
+            System.out.println("COMIENZA LA BATALLA");
+            writer.write("COMIENZA LA BATALLA\n");
+            System.out.println("Turno: 0, salud de Harry: " + harry.getHealth());
+            writer.write("Turno: 0, salud de Harry: " + harry.getHealth() + "\n");
             System.out.println(m);
-        }
+            writer.write(m.toString());
 
-        System.out.println("HARRY HA GANADO EL JUEGO :)");
+            for (int i = 1; harry.getPosition() != m.getExit(); i++) {
+                if (i % 10 == 0) {
+                    harry.setHealth(harry.getHealth() - 20);
+                }
+
+                if (harry.getHealth() <= 0) {
+                    System.out.println("Harry no ha conseguido salir del laberinto :(");
+                    writer.write("Harry no ha conseguido salir del laberinto :(");
+                    writer.close();
+                    return;
+                }
+
+                System.out.println("Turno: " + i + ", salud de Harry: " + harry.getHealth());
+                writer.write("Turno: " + i + ", salud de Harry: " + harry.getHealth() + "\n");
+
+                harry.move(m);
+
+                m.doAdverses();
+                
+                System.out.println(m);
+                writer.write(m.toString());
+            }
+
+            System.out.println("HARRY HA GANADO EL JUEGO :)");
+            writer.write("HARRY HA GANADO EL JUEGO :)");
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());   
+        }
     }
 
     public static void main( String[] args ) {
