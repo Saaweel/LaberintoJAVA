@@ -120,6 +120,7 @@ public class GUI extends javax.swing.JFrame {
             step = 1;
             writer = new FileWriter("src/main/java/com/saaweel/registro.log");
             System.out.println("COMIENZA LA BATALLA");
+            OutputTextArea.append("sdasdasdasdasd");
             writer.write("COMIENZA LA BATALLA\n");
             System.out.println("Turno: 0, salud de Harry: " + harry.getHealth());
             writer.write("Turno: 0, salud de Harry: " + harry.getHealth() + "\n");
@@ -228,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton NextStep;
+    private static javax.swing.JButton NextStep;
     private static javax.swing.JTextArea OutputTextArea;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
