@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Saúl Díaz
+ * @author Saï¿½l Dï¿½az
  */
 public class GUI extends javax.swing.JFrame {
     private static FileWriter writer;
@@ -34,15 +34,15 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        OutputTextArea = new javax.swing.JTextArea();
         NextStep = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        OutputTextArea.setEditable(false);
+        OutputTextArea.setColumns(20);
+        OutputTextArea.setRows(5);
+        jScrollPane1.setViewportView(OutputTextArea);
 
         NextStep.setText("Avanzar");
         NextStep.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +108,7 @@ public class GUI extends javax.swing.JFrame {
                 }
             } else {
                 writer.close();
+                this.dispose();
             }
         } catch (IOException e) {
             System.out.println(e.getMessage()); 
@@ -228,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NextStep;
+    private static javax.swing.JTextArea OutputTextArea;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
