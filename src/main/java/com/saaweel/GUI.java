@@ -151,6 +151,7 @@ public class GUI extends javax.swing.JFrame {
                     writer.write("Harry no ha conseguido salir del laberinto :(");
                     OutputTextArea.append("Harry no ha conseguido salir del laberinto :(");
                     writer.close();
+                    this.dispose();
                     return;
                 }
 
