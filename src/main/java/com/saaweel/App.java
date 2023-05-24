@@ -1,6 +1,7 @@
 package com.saaweel;
 
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class App {
     private static void executeGame(Harry harry, Map m) {
@@ -40,7 +41,7 @@ public class App {
             System.out.println("HARRY HA GANADO EL JUEGO :)");
             writer.write("HARRY HA GANADO EL JUEGO :)");
             writer.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());   
         }
     }
