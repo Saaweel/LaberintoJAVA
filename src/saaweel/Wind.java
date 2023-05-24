@@ -8,13 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
+ * Un tipo de adversidad, el viento, que hace que Harry regrese a la posición inicial del mapa
  * @author Saúl Díaz
  */
 public class Wind extends Adverse {
     /**
-     * @param name (String)
-     * @param position (int)
+     * @param name El nombre de la adversidad (String)
+     * @param position La posición de la adversidad (int)
      */
     public Wind(String name, int position) {
         super(name, position);
@@ -22,10 +22,10 @@ public class Wind extends Adverse {
 
     /**
      * Ejecuta la adversidad
-     * @param harry (Harry)
-     * @param m (Map)
-     * @param log (FileWriter)
-     * @param OutputTextArea (javax.swing.JTextArea)
+     * @param harry El personaje (Harry)
+     * @param m El mapa (Map)
+     * @param log El archivo de registro (FileWriter)
+     * @param OutputTextArea El área de texto de la interfaz (javax.swing.JTextArea)
      */
     public void doAdverse(Harry harry, Map m, FileWriter log, javax.swing.JTextArea OutputTextArea) {
         System.out.println("¡Adversidad " + super.getName() + " atacando a Harry!");

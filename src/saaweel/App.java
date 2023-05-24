@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
+ * Programa principal ejecutable para la consola
  * @author Saúl Díaz
  */
 public class App {
@@ -60,7 +60,7 @@ public class App {
     }
     
     /**
-     * @param args the command line arguments
+     * @param args Los argumentos de la linea de comandos
      */
     public static void main( String[] args ) {
         Map m = new Map(4,4);

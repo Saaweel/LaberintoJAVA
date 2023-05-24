@@ -5,9 +5,24 @@
 package saaweel;
 
 /**
- *
+ * Las direcciones que puede tomar Harry (Norte, Sur, Este, Oeste)
  * @author Saúl Díaz
  */
 public enum Direction {
-    N, S, E, O;
+    /**
+     * Norte
+     */
+    N,
+    /**
+     * Sur
+     */
+    S,
+    /**
+     * Este
+     */
+    E,
+    /**
+     * Oeste
+     */
+    O;
 }

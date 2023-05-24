@@ -5,7 +5,7 @@
 package saaweel;
 
 /**
- *
+ * Clase que representa una pared en el mapa del juego, tiene una coordenada x y una coordenada y (x, y), la x siempre sera la coordenada menor
  * @author Saúl Díaz
  */
 public class Wall {
@@ -13,8 +13,8 @@ public class Wall {
     private int y;
 
     /**
-     * @param x (int)
-     * @param y (int)
+     * @param x La posición X (int)
+     * @param y La posición Y (int)
      */
     public Wall(int x, int y) {
         this.x = x;
@@ -22,14 +22,14 @@ public class Wall {
     }
 
     /**
-     * @return La coordenada x de la pared
+     * @return La coordenada x de la pared (int)
      */
     public int getX() {
         return x;
     }
 
     /**
-     * @return La coordenada y de la pared
+     * @return La coordenada y de la pared (int)
      */
     public int getY() {
         return y;
@@ -37,7 +37,7 @@ public class Wall {
 
     /**
      * Establece la coordenada x de la pared
-     * @param x (int)
+     * @param x La coordenada X (int)
      */
     public void setX(int x) {
         this.x = x;
@@ -45,7 +45,7 @@ public class Wall {
 
     /**
      * Establece la coordenada y de la pared
-     * @param y (int)
+     * @param y La coordenada Y (int)
      */
     public void setY(int y) {
         this.y = y;

@@ -8,12 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
+ * Un tipo de adversidad que ataca a Harry y le resta 30 puntos de vida (HP)
  * @author Saúl Díaz
  */
 public class Dementor extends Adverse {
     /**
-     * @param position (int)
+     * @param position La posición de la adversidad (int)
      */
     public Dementor(int position) {
         super("Dementor", position);
@@ -21,10 +21,10 @@ public class Dementor extends Adverse {
 
     /**
      * Ejecuta la adversidad
-     * @param harry (Harry)
-     * @param m (Map)
-     * @param log (FileWriter)
-     * @param OutputTextArea (javax.swing.JTextArea)
+     * @param harry El personaje (Harry)
+     * @param m El mapa (Map)
+     * @param log El archivo de registro (FileWriter)
+     * @param OutputTextArea El área de texto de la interfaz (javax.swing.JTextArea)
      */
     public void doAdverse(Harry harry, Map m, FileWriter log, javax.swing.JTextArea OutputTextArea) {
         System.out.println("¡Adversidad " + super.getName() + " atacando a Harry!");

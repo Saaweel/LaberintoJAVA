@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.util.LinkedList;
 
 /**
- *
+ * Clase que representa el mapa del juego, contiene las paredes, adversidades y a Harry Potter
  * @author Saúl Díaz
  */
 public class Map {
@@ -19,8 +19,8 @@ public class Map {
     private LinkedList<Adverse> adverses;
 
     /**
-     * @param height (int)
-     * @param width (int)
+     * @param height La altura del mapa (int)
+     * @param width El ancho del mapa (int)
      */
     public Map(int height, int width) {
         this.width = width;
@@ -31,14 +31,14 @@ public class Map {
 
 
     /**
-     * @return El ancho del mapa
+     * @return El ancho del mapa (int)
      */
     public int getWidth() {
         return width;
     }
 
     /**
-     * @return El alto del mapa
+     * @return El alto del mapa (int)
      */
     public int getHeight() {
         return height;
@@ -46,7 +46,7 @@ public class Map {
 
     /**
      * Establece el ancho del mapa
-     * @param width (int)
+     * @param width Ancho del mapa (int)
      */
     public void setWidth(int width) {
         this.width = width;
@@ -54,7 +54,7 @@ public class Map {
 
     /**
      * Establece el alto del mapa
-     * @param height (int)
+     * @param height Alto del mapa (int)
      */
     public void setHeight(int height) {
         this.height = height;
@@ -62,8 +62,8 @@ public class Map {
 
     /**
      * Añade una pared al mapa
-     * @param x (int)
-     * @param y (int)
+     * @param x Posición X de la pared (int)
+     * @param y Posición Y de la pared (int)
      */
     public void addWall(int x, int y) {
         if (x > y) {
@@ -80,8 +80,8 @@ public class Map {
 
     /**
      * Comprueba si existe una pared entre dos posiciones
-     * @param x (int)
-     * @param y (int)
+     * @param x Posición X (int)
+     * @param y Posición Y (int)
      * @return true si existe una pared entre las posiciones, false si no
      */
     public boolean existWall(int x, int y) {
@@ -100,14 +100,14 @@ public class Map {
     }
 
     /**
-     * @return La posición de la salida
+     * @return La posición de la salida (int)
      */
     public int getExit() {
         return this.width * this.height - 1;
     }
 
     /**
-     * @param position (int)
+     * @param position La posición a comprobar (int)
      * @return true si la posición es el primer piso, false si no
      */
     public boolean isFirstFloor(int position) {
@@ -115,7 +115,7 @@ public class Map {
     }
 
     /**
-     * @param position (int)
+     * @param position La posición a comprobar (int)
      * @return true si la posición es el último piso, false si no
      */
     public boolean isLastFloor(int position) {
@@ -123,7 +123,7 @@ public class Map {
     }
 
     /**
-     * @param position (int)
+     * @param position La posición a comprobar (int)
      * @return true si la posición es la primera pared, false si no
      */
     public boolean isFirstWall(int position) {
@@ -131,7 +131,7 @@ public class Map {
     }
 
     /**
-     * @param position (int)
+     * @param position La posición a comprobar (int)
      * @return true si la posición es la última pared, false si no
      */
     public boolean isLastWall(int position) {
@@ -140,7 +140,7 @@ public class Map {
 
     /**
      * Pone a Harry en el mapa
-     * @param harry (Harry)
+     * @param harry El personaje Harry Potter (Harry)
      */
     public void spawnHarry(Harry harry) {
         this.harry = harry;
@@ -148,7 +148,7 @@ public class Map {
 
     /**
      * Añade una adversidad al mapa
-     * @param adverse (Adverse)
+     * @param adverse La adversidad a añadir (Adverse)
      */
     public void addAdverse(Adverse adverse) {
         this.adverses.add(adverse);
@@ -156,8 +156,8 @@ public class Map {
 
     /**
      * Comprueba si hay una adversidad en la posición de Harry y la ejecuta
-     * @param writer (FileWriter)
-     * @param OutputTextArea (javax.swing.JTextArea)
+     * @param writer El archivo de registro (FileWriter)
+     * @param OutputTextArea El área de texto de la interfaz (javax.swing.JTextArea)
      */
     public void doAdverses(FileWriter writer, javax.swing.JTextArea OutputTextArea) {
         for (int i = 0; i < this.adverses.size(); i++) {
@@ -170,7 +170,7 @@ public class Map {
     }
 
     /**
-     * @return El mapa en forma de String
+     * @return El mapa en forma de String (String)
      */
     @Override
     public String toString() {

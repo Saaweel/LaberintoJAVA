@@ -7,7 +7,7 @@ package saaweel;
 import java.util.LinkedList;
 
 /**
- *
+ * Clase que representa a Harry Potter, el personaje principal del juego
  * @author Saúl Díaz
  */
 public class Harry {
@@ -16,7 +16,7 @@ public class Harry {
     private int health;
 
     /**
-     * @param m
+     * @param m El mapa que sigue Harry (Map)
      */
     public Harry(Map m) {
         this.position = 0;
@@ -26,7 +26,7 @@ public class Harry {
     }
 
     /**
-     * @return La ruta que sigue Harry
+     * @return La posición de Harry (int)
      */
     public int getPosition() {
         return this.position;
@@ -34,7 +34,7 @@ public class Harry {
 
     /**
      * Establece la posición de Harry
-     * @param position (int)
+     * @param position La posición de Harry (int)
      */
     public void setPosition(int position) {
         this.position = position;
@@ -42,7 +42,7 @@ public class Harry {
 
     /**
      * Reinicia la posición de Harry
-     * @param m (Map)
+     * @param m El mapa que sigue Harry (Map)
      */
     public void resetPosition(Map m) {
         this.position = 0;
@@ -52,8 +52,8 @@ public class Harry {
 
     /**
      * Traza la ruta que sigue Harry
-     * @param m (Map)
-     * @param visited (LinkedList<Integer>)
+     * @param m El mapa que sigue Harry (Map)
+     * @param visited Las casillas visitadas (LinkedList<Integer>)
      */
     private boolean traceRoute(Map m, LinkedList<Integer> visited) {
         if (this.position == m.getExit()) {
@@ -113,7 +113,7 @@ public class Harry {
 
     /**
      * Mueve a Harry
-     * @param m (Map)
+     * @param m El mapa que sigue Harry (Map)
      */
     public void move(Map m) {
         if (!this.path.isEmpty()) {
@@ -136,7 +136,7 @@ public class Harry {
     }
 
     /**
-     * @return La salud de Harry
+     * @return La salud de Harry (int)
      */
     public int getHealth() {
         return this.health;
@@ -144,7 +144,7 @@ public class Harry {
 
     /**
      * Establece la salud de Harry
-     * @param health (int)
+     * @param health La salud de Harry (int)
      */
     public void setHealth(int health) {
         this.health = health;
