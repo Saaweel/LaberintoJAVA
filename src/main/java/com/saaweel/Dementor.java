@@ -9,9 +9,9 @@ public class Dementor extends Adverse {
     }
 
     public void doAdverse(Harry harry, Map m, FileWriter log) {
-        System.out.println("Â¡Adversidad " + super.getName() + " atacando a Harry!");
+        System.out.println("¡Adversidad " + super.getName() + " atacando a Harry!");
         try {
-            log.write("Â¡Adversidad " + super.getName() + " atacando a Harry!\n");
+            log.write("¡Adversidad " + super.getName() + " atacando a Harry!\n");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
