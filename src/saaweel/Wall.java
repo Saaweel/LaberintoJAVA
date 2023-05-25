@@ -22,6 +22,7 @@ public class Wall {
     }
 
     /**
+     * Devuelve la coordenada x de la pared
      * @return La coordenada x de la pared (int)
      */
     public int getX() {
@@ -29,6 +30,7 @@ public class Wall {
     }
 
     /**
+     * Devuelve la coordenada y de la pared
      * @return La coordenada y de la pared (int)
      */
     public int getY() {

@@ -26,6 +26,7 @@ public class Harry {
     }
 
     /**
+     * Devuelve la posicion de Harry
      * @return La posición de Harry (int)
      */
     public int getPosition() {
@@ -136,6 +137,7 @@ public class Harry {
     }
 
     /**
+     * Devuelve la salud de Harry
      * @return La salud de Harry (int)
      */
     public int getHealth() {

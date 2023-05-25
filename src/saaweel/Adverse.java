@@ -24,6 +24,7 @@ public abstract class Adverse {
     }
 
     /**
+     * Devuelve el nombre de la adversidad
      * @return El nombre de la adversidad (String)
      */
     public String getName() {
@@ -31,6 +32,7 @@ public abstract class Adverse {
     }
     
     /**
+     * Devuelve la posición de la adversidad
      * @return La posición de la adversidad (int)
      */
     public int getPosition() {

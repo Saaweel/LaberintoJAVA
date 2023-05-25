@@ -88,6 +88,9 @@ public class GUI extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * Inicia los componenetes
+     */
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();

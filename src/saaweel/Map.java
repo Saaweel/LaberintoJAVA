@@ -31,6 +31,7 @@ public class Map {
 
 
     /**
+     * Devuelve el ancho del mapa
      * @return El ancho del mapa (int)
      */
     public int getWidth() {
@@ -38,6 +39,7 @@ public class Map {
     }
 
     /**
+     * Devuelve el alto del mapa
      * @return El alto del mapa (int)
      */
     public int getHeight() {
@@ -100,6 +102,7 @@ public class Map {
     }
 
     /**
+     * Devuelve la posición de la salida
      * @return La posición de la salida (int)
      */
     public int getExit() {
@@ -107,6 +110,7 @@ public class Map {
     }
 
     /**
+     * Comprueba si es el primer piso
      * @param position La posición a comprobar (int)
      * @return true si la posición es el primer piso, false si no
      */
@@ -115,6 +119,7 @@ public class Map {
     }
 
     /**
+     * Comprueba si es el último piso
      * @param position La posición a comprobar (int)
      * @return true si la posición es el último piso, false si no
      */
@@ -123,6 +128,7 @@ public class Map {
     }
 
     /**
+     * Comprueba si es la primera pared
      * @param position La posición a comprobar (int)
      * @return true si la posición es la primera pared, false si no
      */
@@ -131,6 +137,7 @@ public class Map {
     }
 
     /**
+     * Comprueba si es la última pared
      * @param position La posición a comprobar (int)
      * @return true si la posición es la última pared, false si no
      */
@@ -170,6 +177,7 @@ public class Map {
     }
 
     /**
+     * Devuelve el mapa en forma de String
      * @return El mapa en forma de String (String)
      */
     @Override
